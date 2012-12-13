@@ -1,4 +1,4 @@
 WebArchiv.cz
 ============
 
-Webarchive Use Case in National Library of the Czech Republic
+Webarchive project in National Library of the Czech Republic written in Scrivener.
