@@ -1,0 +1,37 @@
+{\rtf1\ansi\ansicpg1252\deff0
+{\fonttbl{\f0\fnil\fprq2 Courier New;}{\f1\fnil\fprq2 Segoe UI;}}
+{\colortbl;\red0\green0\blue0;}
+\paperw12240\paperh15840\margl1800\margr1800\margt1440\margb1440\fet2\ftnbj\aenddoc
+\pgnrestart\pgnstarts0
+\pard\plain \fi0\ltrch\loch {\f1\fs24 Initializing Git repository:}
+\par\plain {\f1\fs24\b0\i0 heritrix@crawler00:/opt/heritrix/jobs> }
+\par\plain \f1\fs24\b0\i0
+\par\plain {\f1\fs24\b0\i0 git clone git://github.com/WebArchivCZ/Crawler-config.git}
+\par\plain \f1\fs24\b0\i0
+\par\plain {\f1\fs24\b0\i0 mkdir Crawler-config/Domain-crawls}
+\par\plain {\f1\fs24\b0\i0 cd Crawler-config/Domain-crawls}
+\par\plain \f1\fs24\b0\i0
+\par\plain {\f1\fs24\b0\i0 git checkout -b \hich\f1 \ldblquote \loch\f1 Metadata\hich\f1 \rdblquote \loch\f1 }
+\par\plain \f1\fs24\b0\i0
+\par\plain {\f1\fs24\b0\i0 vim crawler-beans.cxml}
+\par\plain {\f1\fs24\b0\i0 # Values changing with each crawl}
+\par\plain {\f1\fs24\b0\i0 metadata.jobName=Serials 2013-01-1M}
+\par\plain {\f1\fs24\b0\i0 metadata.description=Pravideln\uc1\u225\'E1 sklize\u328\'3F sem\u237\'EDnek s ka\u382\'9Edom\u283\'3Fs\u237\'ED\u269\'3Fn\u237\'ED frekvenc\u237\'ED}
+\par\plain \f1\fs24\b0\i0
+\par\plain {\f1\fs24\b0\i0 # Stable values}
+\par\plain {\f1\fs24\b0\i0 metadata.operatorContactUrl=http://webarchiv.cz/kontakty/}
+\par\plain {\f1\fs24\b0\i0 metadata.operator=Rudolf Kreibich}
+\par\plain {\f1\fs24\b0\i0 metadata.operatorFrom=webarchiv@nkp.cz}
+\par\plain {\f1\fs24\b0\i0 metadata.organization=National Library of the Czech Republic - WebArchiv.cz}
+\par\plain {\f1\fs24\b0\i0 metadata.audience=WebArchiv.cz Users}
+\par\plain {\f1\fs24\b0\i0 metadata.userAgentTemplate=Mozilla/5.0 (compatible; heritrix/@VERSION@ +@OPERATOR_CONTACT_URL@)}
+\par\plain {\f1\fs24\b0\i0 metadata.robotsPolicyName=ignore}
+\par\plain \f1\fs24\b0\i0
+\par\plain {\f1\fs24\b0\i0 git add crawler-beans.cxml}
+\par\plain {\f1\fs24\b0\i0 git -a -m "Metadata configuration for crawling"}
+\par\plain {\f1\fs24\b0\i0 git commit -a -m "Metadata configuration for crawling"}
+\par\plain {\f1\fs24\b0\i0 git checkout master}
+\par\plain {\f1\fs24\b0\i0 git merge Metadata}
+\par\plain {\f1\fs24\b0\i0 git branch -d Metadata}
+\par\plain \f1\fs24\b0\i0
+\par\plain \f1\fs24\b0\i0}

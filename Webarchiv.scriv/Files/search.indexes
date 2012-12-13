@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SearchIndexes Version="1.0">
+    <Documents>
+        <Document ID="0">
+            <Title>Draft</Title>
+        </Document>
+        <Document ID="1">
+            <Title>Research</Title>
+        </Document>
+        <Document ID="2">
+            <Title>Trash</Title>
+        </Document>
+        <Document ID="3">
+            <Title>Heritrix 3 - usage</Title>
+            <Text>Create two files for earch frequency from WAadmin, sort them with unique options into files seeds.txt in job direcotry.
+
+
+heritrix@crawler00:/opt/heritrix/jobs/standard&gt; sort -u seeds-2012-09-* &gt; seeds.txt
+heritrix@crawler00:/opt/heritrix/jobs/standard&gt; cp seeds.txt &gt; surts.txt
+heritrix@crawler00:/opt/heritrix/jobs/standard&gt; vim surts.txt
+:%s/^/+/g
+:wq
+</Text>
+        </Document>
+        <Document ID="4">
+            <Title>Github</Title>
+            <Text>Initializing Git repository:
+heritrix@crawler00:/opt/heritrix/jobs&gt; 
+
+git clone git://github.com/WebArchivCZ/Crawler-config.git
+
+mkdir Crawler-config/Domain-crawls
+cd Crawler-config/Domain-crawls
+
+git checkout -b “Metadata”
+
+vim crawler-beans.cxml
+# Values changing with each crawl
+metadata.jobName=Serials 2013-01-1M
+metadata.description=Pravidelná sklizeň semínek s každoměsíční frekvencí
+
+# Stable values
+metadata.operatorContactUrl=http://webarchiv.cz/kontakty/
+metadata.operator=Rudolf Kreibich
+metadata.operatorFrom=webarchiv@nkp.cz
+metadata.organization=National Library of the Czech Republic - WebArchiv.cz
+metadata.audience=WebArchiv.cz Users
+metadata.userAgentTemplate=Mozilla/5.0 (compatible; heritrix/@VERSION@ +@OPERATOR_CONTACT_URL@)
+metadata.robotsPolicyName=ignore
+
+git add crawler-beans.cxml
+git -a -m &quot;Metadata configuration for crawling&quot;
+git commit -a -m &quot;Metadata configuration for crawling&quot;
+git checkout master
+git merge Metadata
+git branch -d Metadata
+
+</Text>
+        </Document>
+        <Document ID="5">
+            <Title>Regulerní výrazy a sheety</Title>
+            <Text>&lt;!-- Noah's way --&gt;
+&lt;!-- &lt;ref bean=&quot;hostConstraintRejectRegex-0&quot;/&gt; --&gt;
+&lt;!-- and then top-level beans like so: --&gt;
+
+&lt;bean id=&quot;rejectCalendars&quot; class=&quot;org.archive.modules.deciderules.MatchesListRegexDecideRule&quot; autowire-candidate=&quot;false&quot;&gt;
+        &lt;property name=&quot;decision&quot; value=&quot;REJECT&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;rejectCalendars-sheet&quot; class=&quot;org.archive.spring.Sheet&quot;&gt;
+ &lt;property name=&quot;map&quot;&gt;
+  &lt;map&gt;
+   &lt;entry key=&quot;rejectCalendars.regexList&quot;&gt;
+    &lt;list&gt;
+        &lt;value&gt;.*agronavigator.cz*/kalendar.asp\?.*&lt;/value&gt;
+        &lt;value&gt;.*agroporadenstvi.cz.*/kalendar.asp\?.*&lt;/value&gt;
+        &lt;value&gt;http://zbraslav\.info/kalendar-akci/.*/201[5-9]/.*&lt;/value&gt;
+        &lt;value&gt;.*&amp;amp;month:int=[0-9]{1,2}&amp;amp;year:int=(?!(2010|2011)).*&lt;/value&gt;
+        &lt;value&gt;.*knihy_prehled\.asp\?rok=201[6-9]{1}.*&lt;/value&gt;
+    &lt;/list&gt;
+   &lt;/entry&gt;
+  &lt;/map&gt;
+ &lt;/property&gt;
+&lt;/bean&gt;
+
+&lt;bean class=&quot;org.archive.crawler.spring.SurtPrefixesSheetAssociation&quot;&gt;
+ &lt;property name=&quot;surtPrefixes&quot;&gt;
+  &lt;list&gt;
+        &lt;value&gt;+fantasyplanet.cz&lt;/value&gt;
+        &lt;value&gt;+agroporadenstvi.cz&lt;/value&gt;
+        &lt;value&gt;+coena.cz&lt;/value&gt;
+        &lt;value&gt;+agronavigator.cz&lt;/value&gt;
+        &lt;value&gt;+zbraslav.info&lt;/value&gt;
+  &lt;/list&gt;
+ &lt;/property&gt;
+ &lt;property name=&quot;targetSheetNames&quot;&gt;
+  &lt;list&gt;
+        &lt;value&gt;rejectCalendars-sheet&lt;/value&gt;
+  &lt;/list&gt;
+ &lt;/property&gt;
+&lt;/bean&gt;
+</Text>
+        </Document>
+        <Document ID="6">
+            <Title>Příprava semínek</Title>
+            <Text>heritrix@crawler00:/opt/heritrix/jobs/standard&gt; vim seeds-2012-10-V2M.txt
+heritrix@crawler00:/opt/heritrix/jobs/standard&gt; vim seeds-2012-10-V1M.txt
+sort -u seeds-2012-10-*.txt &gt;seeds.txt</Text>
+        </Document>
+        <Document ID="7">
+            <Title>Transforming H1 to H3</Title>
+        </Document>
+        <Document ID="8">
+            <Title>BUDGET: REPLENISH: FRONTIER: </Title>
+            <Text>Viz. https://webarchive.jira.com/wiki/display/Heritrix/Frontier+queue+budgets
+
+frontier.queueTotalBudget=15000
+# INSPECT: There is change that balanceReplenishAmount doesnt work as expected IE: Crawl 5k URIs, and wait for other seeds to crawl until 5k URIs - check FRONTIER
+frontier.balanceReplenishAmount=5000
+
+
+  &lt;property name=&quot;queueTotalBudget&quot; value=&quot;[see override above]&quot;
+  &lt;property name=&quot;balanceReplenishAmount&quot; value=&quot;[see override above]&quot; /&gt;
+…
+&lt;!-- INSPECT! Does BaseQueuePrecedencePolicy works with balanceReplenishAmount? --!&gt;
+ &lt;!-- &lt;property name=&quot;queuePrecedencePolicy&quot;&gt;
+        &lt;bean class=&quot;org.archive.crawler.frontier.precedence.BaseQueuePrecedencePolicy&quot; /&gt;
+       &lt;/property&gt; --&gt;
+
+</Text>
+        </Document>
+        <Document ID="9">
+            <Title>Introduction</Title>
+            <Text>I get into web archiving two years ago, I had quite vague idea about topic and at first I thought I will do just crawls, help bit with of other things that curators deals with on technical level and focus in spare time on storage management issues as it looked way better approach to capitalize soon-to-gather knowledge. And I was right. If I spent more time on understanding storage concepts, my pay-roll would make me grin from ear to ear. But web archiving got me. During my first IIPC conference I realized web archiving deals with topics I was encountering during my New Media Studies. I had straight in front of me beautiful growing big data source with timestamps. Yey! Big companies deals with now and prognosis, with web archives we can dig history. But we have no users of big data. Nobody really cares about web archives. So we have tons of work to do.
+But first comes first and first what comes is realization that consolidating web archive is big task alone. Apparently, lot of much more skilled people before me started lot of projects dealing with web archiving in library. Tools, databases, projects etc. And not much documentation to start with, at least in technical terms. Luckily last crawl engineering introduced me into Heritrix and other IT guy helped me with Wayback. Otherwise my start would be much more painful and slow. I can still ask them for help, but doing things is best way to learn things. So I head into switching to Heritrix 3, because its architecture sounded much more stable for future development. </Text>
+        </Document>
+    </Documents>
+</SearchIndexes>

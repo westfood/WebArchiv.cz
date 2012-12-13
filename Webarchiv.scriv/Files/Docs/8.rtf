@@ -1,0 +1,21 @@
+{\rtf1\ansi\ansicpg1252\deff0
+{\fonttbl{\f0\fmodern\fprq2 Courier New;}{\f1\fmodern\fprq2 Segoe UI;}}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue128;}
+\paperw12240\paperh15840\margl1800\margr1800\margt1440\margb1440\fet2\ftnbj\aenddoc
+\pgnrestart\pgnstarts0
+\pard\plain \fi0\ltrch\loch {\f1\fs24\b0\i0 Viz. }{\field{\*\fldinst HYPERLINK "https://webarchive.jira.com/wiki/display/Heritrix/Frontier+queue+budgets"}{\fldrslt\f1\fs24\b0\i0 https://webarchive.jira.com/wiki/display/Heritrix/Frontier+queue+budgets}}
+\par\plain \f1\fs24\b0\i0
+\par\plain {\f1\fs24\b0\i0 frontier.queueTotalBudget=15000}
+\par\plain {\f1\fs24\b0\i0 # INSPECT: There is change that balanceReplenishAmount doesnt work as expected IE: Crawl 5k URIs, and wait for other seeds to crawl until 5k URIs - check FRONTIER}
+\par\plain {\f1\fs24\b0\i0 frontier.balanceReplenishAmount=5000}
+\par\plain \f1\fs24\b0\i0
+\par\plain \f1\fs24\b0\i0
+\par\plain {\f1\fs24\b0\i0   <property name="queueTotalBudget" value="[see override above]"}
+\par\plain {\f1\fs24\b0\i0   <property name="balanceReplenishAmount" value="[see override above]" />}
+\par\plain {\f1\fs24\b0\i0 \uc1\u8230\'85}
+\par\plain {\f1\fs24\b1\i0 <!-- INSPECT! Does BaseQueuePrecedencePolicy works with balanceReplenishAmount? --!>}
+\par\plain {\f1\fs24\b0\i0  <!-- <property name="queuePrecedencePolicy">}
+\par\plain {\f1\fs24\b0\i0         <bean class="org.archive.crawler.frontier.precedence.BaseQueuePrecedencePolicy" />}
+\par\plain {\f1\fs24\b0\i0        </property> -->}
+\par\plain \f1\fs24\b0\i0
+\par\plain \f1\fs24\b0\i0}
