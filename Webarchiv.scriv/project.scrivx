@@ -31,6 +31,40 @@
                         <Target Type="Words">0</Target>
                     </TextSettings>
                     <Children>
+                        <BinderItem ID="11" Created="2012-12-13 15:09:05 +0000" Modified="2012-12-13 15:14:46 +0000" Type="Text">
+                            <Title>Default behaviour</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <FileExtension>rtf</FileExtension>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>91,91</TextSelection>
+                                <Target Type="Words">0</Target>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="12" Created="2012-12-13 16:37:16 +0000" Modified="2012-12-17 15:36:38 +0000" Type="Text">
+                            <Title>Distributed Crawling</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>1915,1915</TextSelection>
+                                <Target Type="Words">0</Target>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="10" Created="2012-12-13 13:38:27 +0000" Modified="2012-12-13 13:39:40 +0000" Type="Text">
+                            <Title>Document on github</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>135,135</TextSelection>
+                                <Target Type="Words">0</Target>
+                            </TextSettings>
+                        </BinderItem>
                         <BinderItem ID="8" Created="2012-12-07 18:42:45 +0000" Modified="2012-12-07 19:05:30 +0000" Type="Text">
                             <Title>BUDGET: REPLENISH: FRONTIER: </Title>
                             <MetaData>

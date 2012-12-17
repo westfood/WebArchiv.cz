@@ -134,5 +134,29 @@ frontier.balanceReplenishAmount=5000
             <Text>I get into web archiving two years ago, I had quite vague idea about topic and at first I thought I will do just crawls, help bit with of other things that curators deals with on technical level and focus in spare time on storage management issues as it looked way better approach to capitalize soon-to-gather knowledge. And I was right. If I spent more time on understanding storage concepts, my pay-roll would make me grin from ear to ear. But web archiving got me. During my first IIPC conference I realized web archiving deals with topics I was encountering during my New Media Studies. I had straight in front of me beautiful growing big data source with timestamps. Yey! Big companies deals with now and prognosis, with web archives we can dig history. But we have no users of big data. Nobody really cares about web archives. So we have tons of work to do.
 But first comes first and first what comes is realization that consolidating web archive is big task alone. Apparently, lot of much more skilled people before me started lot of projects dealing with web archiving in library. Tools, databases, projects etc. And not much documentation to start with, at least in technical terms. Luckily last crawl engineering introduced me into Heritrix and other IT guy helped me with Wayback. Otherwise my start would be much more painful and slow. I can still ask them for help, but doing things is best way to learn things. So I head into switching to Heritrix 3, because its architecture sounded much more stable for future development. </Text>
         </Document>
+        <Document ID="10">
+            <Title>Document on github</Title>
+            <Text>I started to commit changes of this document to Github. Tracking of changes makes sense for me and my supervisors:-) And it feels cool.</Text>
+        </Document>
+        <Document ID="11">
+            <Title>Default behaviour</Title>
+            <Text>Preference embed hops: Default behaviour is to get embedded content first. Which is right.
+
+</Text>
+        </Document>
+        <Document ID="12">
+            <Title>Distributed Crawling</Title>
+            <Text>Our broad crawls within .cz domain counts around 1M initial seeds. Such crawls had been made in past years usually on one physical machine with attached RAID 6 storage. It was necessary to make checkpoints during crawl as Heritrix used to crash from various reasons starting from lack of RAM to failed components in our infrastructure.
+During 2011 we virtualized our three crawlers into six crawlers on top of VMware ESX servers. Fibre Channel connection to SAN thru one of webarchive servers had been replaced by NFSv3 connection to servers with direct access to GPFS. This unfortunately brought one new issue into our crawls. During broad crawl from multiple machines NFS server tended to hangup from too many connections and thus failing our crawl. Luckily we have three NFS servers, so we just spread two crawlers per one NFS server and problem ceased to exist. We are planing to experiment bit with NFSv4, but until we grow in number of our crawlers - we are not expecting any issues. Anther solution was buying licences for GPFS driver for our crawlers so they connect straight to SAN, but such approach was quite expensive as I heard from our IT department.
+But whole point of 2011 crawl was about splitting seeds into 5 crawls running in parallel fashion. This way we wanted to shorten crawl time from usual two month range to thinner date range, rendering our time-cut of Internet more precise. It actually worked pretty smooth, only less than half of our crawlers crashed during first week. But we had to stop crawling rest of the sites, because storage capacity for our regular crawls for next year was not certain.
+Parallel crawling on multiple machines have one strong issue which is ineffeciency in means of storage and visiting same URIs from different crawlers. I dont have any quantitative proof, but interlinked nature of web and specific of small country seemed like vague argument to care about.
+
+
+Buying licence for GPFS driver on each crawler.
+
+
+Based on:
+http://tech.groups.yahoo.com/group/archive-crawler/message/7342</Text>
+        </Document>
     </Documents>
 </SearchIndexes>
