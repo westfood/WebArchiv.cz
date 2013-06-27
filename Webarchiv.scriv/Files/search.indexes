@@ -24,7 +24,14 @@ heritrix@crawler00:/opt/heritrix/jobs/standard&gt; vim surts.txt
         </Document>
         <Document ID="4">
             <Title>Github</Title>
-            <Text>Initializing Git repository:
+            <Text>When I get into webarchiving, we harvested web with two physical machines, each fitted with 20 TB RAID-6 storage,.  First crawler dedicated for regular crawls and second for whole domain or topic crawling. It actually worked quite well for our purposes, but biggest drawback of such approach was lengthy domain crawling.  It took sometimes 3+ month to crawl around 800k seeds and capture 5000 responses per domain. During such long time we could encountered many unexpected situation such as power blackout, DNS or Internet connection problems. Also there was small chance running Heritrix into out of RAM situation resulting in corruption of crawl. Without duplication reduction mechanism, checkpointing was necessary but bitterly time consuming in Heritrix 1. And on top of that checkpointed crawl failed to recover from time to time. Another argument for shortening our domain crawl came from curators perspective. Archived content should be in as condensed timeframe as possible, because we care about coherence of our time slice of web in particular.
+Easiest solution seemed to run Heritrix as virtualized crawler. Library already invested in VMware ESX infrastructure, so whole bunch of old machines, webarchive’s web and all curator’s application has been virtualized before my arrival.  There was still quite a lot of capacity for of other projects and our crawlers. So I prepared first three crawlers with 2 vCPUs and 8 GB RAM and crawler performance seemed fine. There were no hard testing with comparation of numbers between virtual and physical machine, crawl just seemed to run as expected.  So I ended up with six crawlers and possibility to dedicate five of them for domain crawling.
+So I split seeds into five parts and feed them to each crawler. Obvious problem was crawlers doesn’t have shared URI queue, so they will eventually harvest identical URIs founded during crawl and increasing overall harvest size. Anyway it was accepted behavior in sake of faster domain crawl. But new incident occurred during first week of crawl, our crawlers ceased to write ARCs and end up in errors about no response from storage service. Before final collapse of crawl, errors were coming in waves. Heritrix have quite nice way how to deal with slow responses from storage, giving up writing for while, trying to write again later.  It actually looks like same gentle approach it has towards web servers. But in the end, crawlers died anyway.  After quick research I found cause in old pal NFS. 
+Before virtualization we harvested ARCs to local storage and then we moved data to SAN over NFS. Once crawlers have been virtualized, I started to harvest straight to SAN over NFS. It seemed like jolly good approach to me, but I didn’t knew NFS have issues with too many data connections. After bit of experimenting I concluded that our NFS server configuration can handle only two crawlers without any errors. Quickest and cheapest options was to spread crawlers writing across three NFS servers. Which worked perfectly with our SAN configuration, because third NFS has been just installed and they are only access points into our storage.
+
+
+
+Initializing Git repository:
 heritrix@crawler00:/opt/heritrix/jobs&gt; 
 
 git clone git://github.com/WebArchivCZ/Crawler-config.git
@@ -35,7 +42,7 @@ cd Crawler-config/Domain-crawls
 git checkout -b “Metadata”
 
 vim crawler-beans.cxml
-# Values changing with each crawl
+# Values changing with each crawl’
 metadata.jobName=Serials 2013-01-1M
 metadata.description=Pravidelná sklizeň semínek s každoměsíční frekvencí
 

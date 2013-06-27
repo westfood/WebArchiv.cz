@@ -16,6 +16,7 @@
                 <Alignment>Left</Alignment>
                 <Spacing>1</Spacing>
                 <SpaceBefore>2</SpaceBefore>
+                <SpaceAfter>0</SpaceAfter>
                 <FirstLineIndent>0.5</FirstLineIndent>
                 <Indent>0.5</Indent>
                 <TailIndent>6.5</TailIndent>
@@ -63,6 +64,7 @@
                 <Alignment>Left</Alignment>
                 <Spacing>1</Spacing>
                 <SpaceBefore>1</SpaceBefore>
+                <SpaceAfter>0</SpaceAfter>
                 <FirstLineIndent>0.5</FirstLineIndent>
                 <Indent>0.5</Indent>
                 <TailIndent>6.5</TailIndent>
@@ -88,6 +90,7 @@
                 <Alignment>Left</Alignment>
                 <Spacing>1</Spacing>
                 <SpaceBefore>1</SpaceBefore>
+                <SpaceAfter>0</SpaceAfter>
                 <FirstLineIndent>2.5</FirstLineIndent>
                 <Indent>2.5</Indent>
                 <TailIndent>6.25</TailIndent>
@@ -124,6 +127,7 @@
                 <Alignment>Left</Alignment>
                 <Spacing>1</Spacing>
                 <SpaceBefore>0</SpaceBefore>
+                <SpaceAfter>0</SpaceAfter>
                 <FirstLineIndent>2</FirstLineIndent>
                 <Indent>2</Indent>
                 <TailIndent>4.5</TailIndent>
@@ -149,6 +153,7 @@
                 <Alignment>Left</Alignment>
                 <Spacing>1</Spacing>
                 <SpaceBefore>0</SpaceBefore>
+                <SpaceAfter>0</SpaceAfter>
                 <FirstLineIndent>1.5</FirstLineIndent>
                 <Indent>1.5</Indent>
                 <TailIndent>5</TailIndent>
@@ -173,6 +178,7 @@
                 <Alignment>Right</Alignment>
                 <Spacing>1</Spacing>
                 <SpaceBefore>1</SpaceBefore>
+                <SpaceAfter>0</SpaceAfter>
                 <FirstLineIndent>4.5</FirstLineIndent>
                 <Indent>4.5</Indent>
                 <TailIndent>6.12014</TailIndent>
@@ -211,6 +217,7 @@
                 <Alignment>Left</Alignment>
                 <Spacing>1</Spacing>
                 <SpaceBefore>2</SpaceBefore>
+                <SpaceAfter>0</SpaceAfter>
                 <FirstLineIndent>0.5</FirstLineIndent>
                 <Indent>0.5</Indent>
                 <TailIndent>6.5</TailIndent>
