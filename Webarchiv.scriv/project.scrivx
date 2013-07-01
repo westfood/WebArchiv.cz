@@ -19,7 +19,7 @@
                         <Target Type="Words">0</Target>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="4" Created="2012-09-25 10:55:03 +0000" Modified="2013-06-27 15:08:36 +0000" Type="Text">
+                <BinderItem ID="4" Created="2012-09-25 10:55:03 +0000" Modified="2013-07-01 15:51:48 +0000" Type="Text">
                     <Title>Github</Title>
                     <MetaData>
                         <LabelID>1</LabelID>
@@ -27,7 +27,7 @@
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>3141,3141</TextSelection>
+                        <TextSelection>3603,3603</TextSelection>
                         <Target Type="Words">0</Target>
                     </TextSettings>
                     <Children>
